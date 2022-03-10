@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1">
+    <title>nav</title>
+    <style>
+
+        body {
+            background: rgb(65, 65, 65);
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+
+        .open {
+            position: absolute;
+            top: 0;
+            width: fit-content;
+            font-weight: bolder;
+            color: black;
+            font-size: 50px;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        @media only screen and (orientation: landscape) {
+            .open {font-size: 50px !important;}
+            #x {font-size: 50px !important;}
+        }
+
+        @media only print {
+            * { display: none }
+        }
+
+        #x {
+            font-size: 50px !important;
+            cursor: pointer;
+            height: fit-content;
+            width: fit-content;
+            grid-area: x;
+            grid-column-start: 3;
+            grid-row-start: 1;
+            grid-column-end: 4;
+            grid-row-end: 2;
+            justify-self: start;
+            align-self: end;
+        }
+
+        #pfp {
+            grid-area: pfp;
+            width: 12.5vw;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            justify-self: center;
+            align-self: center;
+        }
+
+        .btn1 {
+            grid-area: login;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
+            align-self: stretch;
+            display: flex;
+            align-items:center;
+            justify-content:center;
+            transition: 1s;
+            border: 2px solid transparent;
+        }
+
+        .btn2 {
+            grid-area: signup;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 4;
+            grid-row-end: 5;
+            align-self: stretch;
+            display: flex;
+            align-items:center;
+            justify-content:center;
+            transition: 1s;
+            border: 2px solid transparent;
+        }
+
+        .btn3 {
+            grid-area: info;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 5;
+            grid-row-end: 6;
+            align-self: stretch;
+            display: flex;
+            align-items:center;
+            justify-content:center;
+            transition: 1s;
+            border: 2px solid transparent;
+        }
+
+        #x:hover, .btn1:hover, .btn2:hover, .btn3:hover {
+            color: rgb(199, 199, 199);
+            cursor: pointer;
+            border-color: rgb(199, 199, 199);
+        }
+
+        nav {
+            overflow: hidden;
+            font-size: x-large;
+            color: rgb(22, 22, 22);
+            text-align: center;
+            font-weight: bolder;
+            width: 0;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(100, 100, 100, .8);
+            transition: .5s;
+            visibility: hidden;
+            overflow-x: hidden;
+        }
+        #navGrid {
+            height: inherit;
+            display: grid;
+            grid-template-columns: .25fr auto .25fr;
+            grid-template-rows: .125fr .5fr .125fr .125fr .125fr 1fr;
+            grid-template-areas: 
+                ". . x"
+                ". pfp ."
+                ". login ."
+                ". signup ."
+                ". info .";
+            grid-gap: 2% 0;
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            transition: .25s;
+        }
+        p {
+            position: relative;
+            top: 20%;
+            left: 10%;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;" >Lorem ipsum</h1>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisci tempor incidunt ut labore et dolore magna aliqua veniam, quis nostrud exercitation ullamcorpor s commodo consequat. Duis autem vel eum irrure esse molestiae consequat, vel illum dolore eu fugi et iusto odio dignissim qui blandit praesent luptat exceptur sint occaecat cupiditat non provident, deserunt mollit anim id est laborum et dolor fuga distinct. Nam liber tempor cum soluta nobis elige quod maxim placeat facer possim omnis volupt
+
+        Lorem ipsum dolor si amet, consectetur adipiscing incidunt ut labore et dolore magna aliquam erat nostrud exercitation ullamcorper suscipit laboris nis duis autem vel eum irure dolor in reprehenderit i, dolore eu fugiat nulla pariatur. At vero eos et accusa praesant luptatum delenit aigue duos dolor et mole provident, simil tempor sunt in culpa qui officia de fuga. Et harumd dereud facilis est er expedit disti eligend optio congue nihil impedit doming id quod assumenda est, omnis dolor repellend. Temporibud
+        
+        Lorem ipsum dolor si amet, consectetur adipiscing incidunt ut labore et dolore magna aliquam erat nostrud exercitation ullamcorper suscipit laboris nis duis autem vel eum irure dolor in reprehenderit i dolore eu fugiat nulla pariatur. At vero eos et accus praesant luptatum delenit aigue duos dolor et mol provident, simil tempor sunt in culpa qui officia de fuga. Et harumd dereud facilis est er expedit disti eligend oprio congue nihil impedit doming id quod assumenda est, omnis dolor repellend.</p>
+    <nav>
+        <div id="navGrid">
+            <span id="x" onclick="cl()">&times;</span>
+            <img id='pfp' src="pfp.png" alt="Default Profile Picture">
+            <div class="btn1">Log In</div>
+            <div class="btn2">Sign Up</div>
+            <div class="btn3">Info</div>
+        </div>
+    </nav>
+    <div class="open" onclick="op()">&equiv;</div>
+
+
+    <script>
+        let open = document.querySelector('.open');
+        let navGrid = document.getElementById('navGrid');
+        open.style.right = (open.offsetWidth).toString() + 'px'
+        if (document.body.clientHeight < document.body.clientWidth) {
+                navGrid.style.width = "25vw";
+            } else {
+                navGrid.style.width = "100vw";
+        }
+        function op() {
+            let nav = document.querySelector('nav');
+            let navGrid = document.getElementById('navGrid');
+            let open = document.querySelector('.open');
+            nav.style.visibility = 'visible';
+            if (document.body.clientHeight < document.body.clientWidth) {
+                nav.style.width = "25vw";
+            } else {
+                nav.style.width = "100vw";
+            }
+            setTimeout(() => {navGrid.style.bottom = "0";}, 250);
+            open.style.right = (-1*open.offsetWidth).toString() + 'px'
+        }
+        function cl() {
+            let nav = document.querySelector('nav');
+            let navGrid = document.getElementById('navGrid');
+            let open = document.querySelector('.open');
+            navGrid.style.bottom = "100%";
+            setTimeout(() => {
+                nav.style.visibility = 'hidden';
+                nav.style.width = "0"
+            }, 250);
+            open.style.right = (open.offsetWidth).toString() + 'px'
+        }
+</script>
+</body>
+</html>
