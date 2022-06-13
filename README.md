@@ -1,2 +1,2 @@
 # nav
-An interesting navbar for a website ^-^
+An interesting and original template navbar for a website ^-^
